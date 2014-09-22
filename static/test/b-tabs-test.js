@@ -13,7 +13,9 @@ requirejs([
 
     describe('Tabs', function () {
         var module = function () {
-            return new Tabs();
+            return new Tabs({
+                name: 'test',
+            });
         };
 
         beforeEach(function () {
@@ -26,6 +28,12 @@ requirejs([
             it('should initialize', function () {
                 var m = module();
                 assert.isDefined(m);
+            });
+
+            it('should throw if no options', function () {
+                assert.throw(function () {
+                    var m = new Tabs();
+                });
             });
         });
 
