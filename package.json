@@ -1,0 +1,22 @@
+{
+  "name": "b-tabs",
+  "version": "0.0.0",
+  "homepage": "https://github.com/VovanR/b-tabs",
+  "license": "MIT",
+  "repository": "VovanR/b-tabs",
+  "author": {
+    "name": "VovanR",
+    "url": "http://vovanr.com/"
+  },
+  "devDependencies": {
+    "bower": "",
+    "gulp": "",
+    "gulp-jscs": "",
+    "gulp-jshint": "",
+    "gulp-mocha-phantomjs": "",
+    "gulp-notify": "",
+    "jscs": "",
+    "jscs-jsdoc": "",
+    "jshint-stylish": ""
+  }
+}
