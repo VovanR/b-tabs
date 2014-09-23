@@ -1,0 +1,51 @@
+/*
+ * Tabs
+ */
+
+.b-tabs {
+}
+
+.b-tabs__tabs {
+}
+
+.b-tabs__tab {
+    display: inline-block;
+    box-sizing: border-box;
+    vertical-align: bottom;
+    text-decoration: none;
+    line-height: 1;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: none;
+    }
+
+    &._state_current {
+    }
+
+    &._enabled_false {
+        display: none;
+    }
+}
+
+.b-tabs__tab-text {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+}
+
+
+.b-tabs__panels {
+}
+
+.b-tabs__panel {
+    display: none;
+
+    &._enabled_false {
+        display: none;
+    }
+
+    &._state_current {
+        display: block;
+    }
+}
