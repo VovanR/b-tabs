@@ -35,12 +35,36 @@ requirejs([
                     var m = new Tabs();
                 });
             });
+
+            it('should have tabs block', function () {
+                var m = module();
+                assert.isDefined(m._bTabs[0]);
+            });
+
+            it('should have panels block', function () {
+                var m = module();
+                assert.isDefined(m._bPanels[0]);
+            });
         });
 
         describe('#getName', function () {
             it('should return name', function () {
                 var m = module();
-                assert.equal(m.getName(), 'Tabs');
+                assert.equal(m.getName(), 'test');
+            });
+        });
+
+        describe('ui', function () {
+            describe('click on tab', function () {
+                it('should open this tab', function () {
+                    var m = module();
+                    var fooTab = m._bTabs.filter('._name_foo');
+                    fooTab.trigger('click');
+                    assert.ok(fooTab.hasClass('_state_current'));
+                    assert.equal(m._bTabs.filter('._state_current').length, 0);
+                    assert.ok(m._bPanels.filter('._name_foo').hasClass('_state_current'));
+                    assert.equal(m._bPanels.filter('._state_current').length, 0);
+                });
             });
         });
     });
