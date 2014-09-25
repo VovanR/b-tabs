@@ -114,6 +114,22 @@ requirejs([
                     });
                 });
             });
+
+            describe('navigate with arrow keys', function () {
+                it('should open next tab when press arrow right key', function (done) {
+                    var m = module();
+                    var keyEvent = $.Event('keyup');
+                    keyEvent.keyCode = 39;
+                    m._bTabs.find('._state_current').trigger(keyEvent);
+                    setTimeout(function () {
+                        assert.ok(m._bTabs.find('._name_baz').hasClass('_state_current'));
+                        assert.equal(m._bTabs.find('._state_current').length, 1);
+                        assert.ok(m._bPanels.find('._name_baz').hasClass('_state_current'));
+                        assert.equal(m._bPanels.find('._state_current').length, 1);
+                        done();
+                    });
+                });
+            });
         });
     });
 
