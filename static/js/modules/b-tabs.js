@@ -37,8 +37,8 @@ define([
             console.info('Tabs init');
 
             var bTabs = $('.b-tabs._name_' + this._name);
-            this._bTabs = bTabs.find('.b-tabs__tab');
-            this._bPanels = bTabs.find('.b-tabs__panel');
+            this._bTabs = bTabs.filter('.b-tabs__tabs');
+            this._bPanels = bTabs.filter('.b-tabs__panels');
 
             this._bindControls();
         },
@@ -50,6 +50,21 @@ define([
          */
         _bindControls: function () {
             var _this = this; // Save context
+
+            this._bTabs.on('click', '.b-tabs__tab', function (e) {
+                var $this = $(this);
+                var name = $this.data('name');
+                _this._bTabs.find('.b-tabs__tab')
+                    .removeClass(currentClass)
+                    .filter('._name_' + name)
+                    .addClass(currentClass);
+                _this._bPanels.find('.b-tabs__panel')
+                    .removeClass(currentClass)
+                    .filter('._name_' + name)
+                    .addClass(currentClass);
+
+                e.preventDefault();
+            });
         },
 
         /**
