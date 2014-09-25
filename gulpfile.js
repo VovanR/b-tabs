@@ -57,4 +57,4 @@ gulp.task('watch', function () {
     gulp.watch(['./static/css/**/*.less'], ['less']);
 });
 
-gulp.task('default', ['lint']);
+gulp.task('default', ['lint', 'test']);
