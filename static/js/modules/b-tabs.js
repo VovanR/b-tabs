@@ -8,6 +8,8 @@ define([
     $
 ) {
 
+    'use strict';
+
     var Tabs;
     var currentClass = '_state_current';
 
