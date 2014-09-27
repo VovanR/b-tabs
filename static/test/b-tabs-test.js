@@ -20,7 +20,12 @@ requirejs([
             });
         };
 
+        var _bFixtureTemplate = $('#fixture-template');
+        var _fixtureTemplate = _bFixtureTemplate.html();
+        _bFixtureTemplate.empty();
+
         beforeEach(function () {
+            $('#fixtures').html(_fixtureTemplate);
         });
 
         afterEach(function () {
