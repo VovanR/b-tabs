@@ -61,6 +61,25 @@ requirejs([
             });
         });
 
+        describe('#openNext', function () {
+            it('should open next tab', function () {
+                var m = module();
+                m.openNext();
+                assert.ok(m._bTabs.find('._name_baz').hasClass('_state_current'));
+                assert.equal(m._bTabs.find('._state_current').length, 1);
+                m.openNext();
+                assert.ok(m._bTabs.find('._name_qux').hasClass('_state_current'));
+            });
+
+            it('should open first tab if current is last', function () {
+                var m = module();
+                m.openNext();
+                m.openNext();
+                m.openNext();
+                assert.ok(m._bTabs.find('._name_foo').hasClass('_state_current'));
+            });
+        });
+
         describe('ui', function () {
             describe('click on tab', function () {
                 it('should open this tab', function (done) {
@@ -94,10 +113,10 @@ requirejs([
                         m._bTabs.find('._name_foo')
                             .clone()
                             .removeClass('_name_foo')
-                            .addClass('_name_qux')
-                            .data('name', 'qux')
+                            .addClass('_name_quux')
+                            .data('name', 'quux')
                             .children()
-                            .text('Qux Tab')
+                            .text('Quux Tab')
                             .parent()
                     );
                     // Add new panel
@@ -105,15 +124,15 @@ requirejs([
                         m._bPanels.find('._name_foo')
                             .clone()
                             .removeClass('_name_foo')
-                            .addClass('_name_qux')
-                            .data('name', 'qux')
-                            .text('Qux Pabel')
+                            .addClass('_name_quux')
+                            .data('name', 'quux')
+                            .text('Quux Pabel')
                     );
-                    m._bTabs.find('._name_qux').trigger('click');
+                    m._bTabs.find('._name_quux').trigger('click');
                     setTimeout(function () {
-                        assert.ok(m._bTabs.find('._name_qux').hasClass('_state_current'));
+                        assert.ok(m._bTabs.find('._name_quux').hasClass('_state_current'));
                         assert.equal(m._bTabs.find('._state_current').length, 1);
-                        assert.ok(m._bPanels.find('._name_qux').hasClass('_state_current'));
+                        assert.ok(m._bPanels.find('._name_quux').hasClass('_state_current'));
                         assert.equal(m._bPanels.find('._state_current').length, 1);
                         done();
                     });

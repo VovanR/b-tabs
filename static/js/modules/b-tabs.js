@@ -67,6 +67,34 @@ define([
 
                 e.preventDefault();
             });
+
+            this._bindArrowKeys();
+        },
+
+        /**
+         * Binding arrow keys to navigate tabs
+         *
+         * @private
+         */
+        _bindArrowKeys: function () {
+            this._bTabs.on('keyup', function (e) {
+                if (e.keyCode === 39) {
+                    this.openNext();
+                }
+            }.bind(this));
+        },
+
+        /**
+         * Open next tab
+         */
+        openNext: function () {
+            var tabs = this._bTabs.find('.b-tabs__tab');
+            var current = this._bTabs.find('.' + currentClass).index();
+            var length = tabs.length;
+
+            tabs.removeClass(currentClass);
+
+            $(tabs[current + 1]).addClass(currentClass);
         },
 
         /**
