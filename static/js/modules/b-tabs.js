@@ -57,7 +57,6 @@ define([
                 var name = $(this).data('name');
 
                 _this._openTab(name);
-                _this._openPanel(name);
 
                 e.preventDefault();
             });
@@ -74,6 +73,8 @@ define([
             this._bTabs.on('keyup', function (e) {
                 if (e.keyCode === 39) {
                     this.openNext();
+                } else if (e.keyCode === 37) {
+                    this.openPrev();
                 }
             }.bind(this));
         },
@@ -89,6 +90,8 @@ define([
                 .removeClass(currentClass)
                 .filter('._name_' + name)
                 .addClass(currentClass);
+
+            this._openPanel(name);
         },
 
         /**
@@ -114,17 +117,11 @@ define([
             var length = tabs.length;
             var next = current + 1;
 
-            tabs.removeClass(currentClass);
-
             if (next === length) {
                 next = 0;
             }
 
-            var nextTab = $(tabs[next]);
-            nextTab.addClass(currentClass);
-            var name = nextTab.data('name');
-
-            this._openPanel(name);
+            this._openTab($(tabs[next]).data('name'));
         },
 
         /**
@@ -137,9 +134,11 @@ define([
             var length = tabs.length;
             var prev = current - 1;
 
-            tabs.removeClass(currentClass);
+            if (prev === -1) {
+                prev = length - 1;
+            }
 
-            tabs.filter('._name_foo').addClass(currentClass);
+            this._openTab($(tabs[prev]).data('name'));
         },
 
         /**

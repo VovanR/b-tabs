@@ -98,6 +98,13 @@ requirejs([
                 m.openPrev();
                 assert.equal(m._bTabs.find('._state_current').length, 1);
             });
+
+            it('should open last tab if current is first', function () {
+                var m = module();
+                m.openPrev();
+                m.openPrev();
+                assert.ok(m._bTabs.find('._name_qux').hasClass('_state_current'));
+            });
         });
 
         describe('#_openTab', function () {
@@ -114,7 +121,13 @@ requirejs([
                 var m = module();
                 m._openTab('foo');
                 assert.equal(m._bTabs.find('._state_current').length, 1);
-            })
+            });
+
+            it('should open tab panel', function () {
+                var m = module();
+                m._openTab('foo');
+                assert.ok(m._bPanels.find('._name_foo').hasClass('_state_current'));
+            });
         });
 
         describe('#_openPanel', function () {
@@ -202,6 +215,20 @@ requirejs([
                         assert.ok(m._bTabs.find('._name_baz').hasClass('_state_current'));
                         assert.equal(m._bTabs.find('._state_current').length, 1);
                         assert.ok(m._bPanels.find('._name_baz').hasClass('_state_current'));
+                        assert.equal(m._bPanels.find('._state_current').length, 1);
+                        done();
+                    });
+                });
+
+                it('should open prev tab when press arrow left key', function (done) {
+                    var m = module();
+                    var keyEvent = $.Event('keyup');
+                    keyEvent.keyCode = 37;
+                    m._bTabs.find('._state_current').trigger(keyEvent);
+                    setTimeout(function () {
+                        assert.ok(m._bTabs.find('._name_foo').hasClass('_state_current'));
+                        assert.equal(m._bTabs.find('._state_current').length, 1);
+                        assert.ok(m._bPanels.find('._name_foo').hasClass('_state_current'));
                         assert.equal(m._bPanels.find('._state_current').length, 1);
                         done();
                     });
