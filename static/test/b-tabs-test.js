@@ -68,7 +68,7 @@ requirejs([
                 assert.ok(m._bTabs.find('._name_baz').hasClass('_state_current'));
                 assert.equal(m._bTabs.find('._state_current').length, 1);
                 assert.ok(m._bPanels.find('._name_baz').hasClass('_state_current'));
-                assert.equal(m._bPanels.find('._state_current').length, 1);
+                assert.equal(m._bPanels.find('._state_current').length, 2);
                 m.openNext();
                 assert.ok(m._bTabs.find('._name_qux').hasClass('_state_current'));
                 assert.ok(m._bPanels.find('._name_qux').hasClass('_state_current'));
@@ -142,7 +142,7 @@ requirejs([
             it('should close other panels', function () {
                 var m = module();
                 m._openPanel('foo');
-                assert.equal(m._bPanels.find('._state_current').length, 1);
+                assert.equal(m._bPanels.find('._state_current').length, 2);
             });
         });
 
@@ -156,7 +156,7 @@ requirejs([
                         assert.ok(fooTab.hasClass('_state_current'));
                         assert.equal(m._bTabs.find('._state_current').length, 1);
                         assert.ok(m._bPanels.find('._name_foo').hasClass('_state_current'));
-                        assert.equal(m._bPanels.find('._state_current').length, 1);
+                        assert.equal(m._bPanels.find('._state_current').length, 2);
 
                         var bazTab = m._bTabs.find('._name_baz');
                         bazTab.trigger('click');
@@ -164,7 +164,7 @@ requirejs([
                             assert.ok(bazTab.hasClass('_state_current'));
                             assert.equal(m._bTabs.find('._state_current').length, 1);
                             assert.ok(m._bPanels.find('._name_baz').hasClass('_state_current'));
-                            assert.equal(m._bPanels.find('._state_current').length, 1);
+                            assert.equal(m._bPanels.find('._state_current').length, 2);
                             done();
                         });
                     });
@@ -186,20 +186,29 @@ requirejs([
                             .parent()
                     );
                     // Add new panel
-                    m._bPanels.append(
-                        m._bPanels.find('._name_foo')
+                    $(m._bPanels[0]).append(
+                        $(m._bPanels[0]).find('._name_foo')
                             .clone()
                             .removeClass('_name_foo')
                             .addClass('_name_quux')
                             .data('name', 'quux')
-                            .text('Quux Pabel')
+                            .text('Quux Panel')
+                    );
+                    // Add new panel 2
+                    $(m._bPanels[1]).append(
+                        $(m._bPanels[1]).find('._name_foo')
+                            .clone()
+                            .removeClass('_name_foo')
+                            .addClass('_name_quux')
+                            .data('name', 'quux')
+                            .text('Quux Panel 2')
                     );
                     m._bTabs.find('._name_quux').trigger('click');
                     setTimeout(function () {
                         assert.ok(m._bTabs.find('._name_quux').hasClass('_state_current'));
                         assert.equal(m._bTabs.find('._state_current').length, 1);
                         assert.ok(m._bPanels.find('._name_quux').hasClass('_state_current'));
-                        assert.equal(m._bPanels.find('._state_current').length, 1);
+                        assert.equal(m._bPanels.find('._state_current').length, 2);
                         done();
                     });
                 });
@@ -215,7 +224,7 @@ requirejs([
                         assert.ok(m._bTabs.find('._name_baz').hasClass('_state_current'));
                         assert.equal(m._bTabs.find('._state_current').length, 1);
                         assert.ok(m._bPanels.find('._name_baz').hasClass('_state_current'));
-                        assert.equal(m._bPanels.find('._state_current').length, 1);
+                        assert.equal(m._bPanels.find('._state_current').length, 2);
                         done();
                     });
                 });
@@ -229,7 +238,7 @@ requirejs([
                         assert.ok(m._bTabs.find('._name_foo').hasClass('_state_current'));
                         assert.equal(m._bTabs.find('._state_current').length, 1);
                         assert.ok(m._bPanels.find('._name_foo').hasClass('_state_current'));
-                        assert.equal(m._bPanels.find('._state_current').length, 1);
+                        assert.equal(m._bPanels.find('._state_current').length, 2);
                         done();
                     });
                 });
