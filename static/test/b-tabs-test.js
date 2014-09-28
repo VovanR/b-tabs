@@ -91,6 +91,22 @@ requirejs([
             });
         });
 
+        describe('#_openPanel', function () {
+            it('should open panel', function () {
+                var m = module();
+                m._openPanel('foo');
+                assert.ok(m._bPanels.find('._name_foo').hasClass('_state_current'));
+                m._openPanel('qux');
+                assert.ok(m._bPanels.find('._name_qux').hasClass('_state_current'));
+            });
+
+            it('should close other panels', function () {
+                var m = module();
+                m._openPanel('foo');
+                assert.equal(m._bPanels.find('._state_current').length, 1);
+            });
+        });
+
         describe('ui', function () {
             describe('click on tab', function () {
                 it('should open this tab', function (done) {

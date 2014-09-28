@@ -60,10 +60,7 @@ define([
                     .removeClass(currentClass)
                     .filter('._name_' + name)
                     .addClass(currentClass);
-                _this._bPanels.find('.b-tabs__panel')
-                    .removeClass(currentClass)
-                    .filter('._name_' + name)
-                    .addClass(currentClass);
+                _this._openPanel(name);
 
                 e.preventDefault();
             });
@@ -82,6 +79,19 @@ define([
                     this.openNext();
                 }
             }.bind(this));
+        },
+
+        /**
+         * Open panel
+         *
+         * @param {String} name
+         * @private
+         */
+        _openPanel: function (name) {
+            this._bPanels.find('.b-tabs__panel')
+                .removeClass(currentClass)
+                .filter('._name_' + name)
+                .addClass(currentClass);
         },
 
         /**
@@ -104,10 +114,7 @@ define([
             nextTab.addClass(currentClass);
             var name = nextTab.data('name');
 
-            this._bPanels.find('.b-tabs__panel')
-                .removeClass(currentClass)
-                .filter('._name_' + name)
-                .addClass(currentClass);
+            this._openPanel(name);
         },
 
         /**
