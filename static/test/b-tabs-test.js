@@ -86,9 +86,35 @@ requirejs([
         describe('#openPrev', function () {
             it('should open prev tab', function () {
                 var m = module();
+                m._openTab('baz');
+                m.openPrev();
+                assert.ok(m._bTabs.find('._name_bar').hasClass('_state_current'));
                 m.openPrev();
                 assert.ok(m._bTabs.find('._name_foo').hasClass('_state_current'));
             });
+
+            it('should close other tabs', function () {
+                var m = module();
+                m.openPrev();
+                assert.equal(m._bTabs.find('._state_current').length, 1);
+            });
+        });
+
+        describe('#_openTab', function () {
+            it('should open tab', function () {
+                var m = module();
+                m._openTab('foo');
+                assert.ok(m._bTabs.find('._name_foo').hasClass('_state_current'));
+
+                m._openTab('qux');
+                assert.ok(m._bTabs.find('._name_qux').hasClass('_state_current'));
+            });
+
+            it('should close other tabs', function () {
+                var m = module();
+                m._openTab('foo');
+                assert.equal(m._bTabs.find('._state_current').length, 1);
+            })
         });
 
         describe('#_openPanel', function () {

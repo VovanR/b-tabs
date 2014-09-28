@@ -54,12 +54,9 @@ define([
             var _this = this; // Save context
 
             this._bTabs.on('click', '.b-tabs__tab', function (e) {
-                var $this = $(this);
-                var name = $this.data('name');
-                _this._bTabs.find('.b-tabs__tab')
-                    .removeClass(currentClass)
-                    .filter('._name_' + name)
-                    .addClass(currentClass);
+                var name = $(this).data('name');
+
+                _this._openTab(name);
                 _this._openPanel(name);
 
                 e.preventDefault();
@@ -79,6 +76,19 @@ define([
                     this.openNext();
                 }
             }.bind(this));
+        },
+
+        /**
+         * Open tab
+         *
+         * @param {String} name
+         * @private
+         */
+        _openTab: function (name) {
+            this._bTabs.find('.b-tabs__tab')
+                .removeClass(currentClass)
+                .filter('._name_' + name)
+                .addClass(currentClass);
         },
 
         /**
@@ -121,6 +131,15 @@ define([
          * Open previous tab
          */
         openPrev: function () {
+            var tabs = this._bTabs.find('.b-tabs__tab');
+            var currentTab = this._bTabs.find('.' + currentClass);
+            var current = currentTab.index();
+            var length = tabs.length;
+            var prev = current - 1;
+
+            tabs.removeClass(currentClass);
+
+            tabs.filter('._name_foo').addClass(currentClass);
         },
 
         /**
