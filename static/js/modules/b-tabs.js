@@ -51,6 +51,16 @@ define([
          * @private
          */
         _bindControls: function () {
+            this._bindClickOnTab();
+            this._bindArrowKeys();
+        },
+
+        /**
+         * Binding click on tabs
+         *
+         * @private
+         */
+        _bindClickOnTab: function () {
             var _this = this; // Save context
 
             this._bTabs.on('click', '.b-tabs__tab', function (e) {
@@ -61,7 +71,6 @@ define([
                 e.preventDefault();
             });
 
-            this._bindArrowKeys();
         },
 
         /**
