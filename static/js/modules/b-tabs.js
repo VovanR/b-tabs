@@ -89,12 +89,31 @@ define([
          */
         openNext: function () {
             var tabs = this._bTabs.find('.b-tabs__tab');
-            var current = this._bTabs.find('.' + currentClass).index();
+            var currentTab = this._bTabs.find('.' + currentClass);
+            var current = currentTab.index();
             var length = tabs.length;
+            var next = current + 1;
 
             tabs.removeClass(currentClass);
 
-            $(tabs[current + 1]).addClass(currentClass);
+            if (next === length) {
+                next = 0;
+            }
+
+            var nextTab = $(tabs[next]);
+            nextTab.addClass(currentClass);
+            var name = nextTab.data('name');
+
+            this._bPanels.find('.b-tabs__panel')
+                .removeClass(currentClass)
+                .filter('._name_' + name)
+                .addClass(currentClass);
+        },
+
+        /**
+         * Open previous tab
+         */
+        openPrev: function () {
         },
 
         /**

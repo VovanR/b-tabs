@@ -67,8 +67,11 @@ requirejs([
                 m.openNext();
                 assert.ok(m._bTabs.find('._name_baz').hasClass('_state_current'));
                 assert.equal(m._bTabs.find('._state_current').length, 1);
+                assert.ok(m._bPanels.find('._name_baz').hasClass('_state_current'));
+                assert.equal(m._bPanels.find('._state_current').length, 1);
                 m.openNext();
                 assert.ok(m._bTabs.find('._name_qux').hasClass('_state_current'));
+                assert.ok(m._bPanels.find('._name_qux').hasClass('_state_current'));
             });
 
             it('should open first tab if current is last', function () {
@@ -76,6 +79,14 @@ requirejs([
                 m.openNext();
                 m.openNext();
                 m.openNext();
+                assert.ok(m._bTabs.find('._name_foo').hasClass('_state_current'));
+            });
+        });
+
+        describe('#openPrev', function () {
+            it('should open prev tab', function () {
+                var m = module();
+                m.openPrev();
                 assert.ok(m._bTabs.find('._name_foo').hasClass('_state_current'));
             });
         });
