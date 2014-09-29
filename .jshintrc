@@ -13,7 +13,6 @@
   "globals": {
     "jQuery": true,
     "$": true,
-    "gettext": true,
     "define": true,
     "console": true,
     "alert": true,
@@ -26,11 +25,6 @@
     "describe": true,
     "it": true,
     "beforeEach": true,
-    "afterEach": true,
-    "google": true,
-    "L": true,
-    "MQ": true,
-    "videojs": true,
-    "soundManager": true
+    "afterEach": true
   }
 }
