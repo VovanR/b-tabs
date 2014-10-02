@@ -1,7 +1,7 @@
 requirejs([
     '../vendor/chai/chai',
     'jquery',
-    '../js/modules/b-tabs',
+    '../index',
 ], function (
     chai,
     $,

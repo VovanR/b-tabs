@@ -18,7 +18,6 @@
     "gulp-jshint": "",
     "gulp-less": "",
     "gulp-mocha-phantomjs": "",
-    "gulp-notify": "",
     "jscs": "",
     "jscs-jsdoc": "",
     "jshint-stylish": ""

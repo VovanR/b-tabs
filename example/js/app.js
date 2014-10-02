@@ -4,7 +4,7 @@
 
 define([
     'jquery',
-    '../modules/b-tabs',
+    '../../index',
 ], function (
     $,
     Tabs
@@ -25,7 +25,9 @@ define([
         _initialize: function () {
             console.info('App init');
 
-            var tabs = new Tabs();
+            var tabs = new Tabs({
+                name: 'test',
+            });
         },
     };
 

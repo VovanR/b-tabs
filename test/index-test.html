@@ -94,9 +94,9 @@
         <script src="../vendor/mocha/mocha.js"></script>
         <script src="../vendor/requirejs/require.js"></script>
         <script>
-        requirejs.config.baseUrl = '../js/';
-        requirejs(['../js/common'], function (common) {
-            requirejs(['../test/b-tabs-test']);
+        requirejs.config.baseUrl = './';
+        requirejs(['../common'], function (common) {
+            requirejs(['./index-test']);
         });
         </script>
     </body>

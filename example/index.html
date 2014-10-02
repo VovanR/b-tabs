@@ -58,6 +58,14 @@
 <!-- b-tabs__panels end -->
 
 
-        <script data-main="../js/example" src="../vendor/requirejs/require.js"></script>
+        <script src="../vendor/requirejs/require.js"></script>
+        <script>
+        requirejs.config.baseUrl = './';
+        requirejs(['../common'], function (common) {
+            requirejs(['./js/app'], function (App) {
+                var app = new App();
+            });
+        });
+        </script>
     </body>
 </html>
