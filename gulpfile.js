@@ -10,7 +10,7 @@ var mochaPhantomJS = require('gulp-mocha-phantomjs');
 
 gulp.task('lint', function () {
     return gulp
-        .src(['./index.js', './gulpfile.js'])
+        .src(['./index.js', './test/index-test.js', './gulpfile.js'])
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-stylish'))
         .pipe(jscs());
