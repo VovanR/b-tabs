@@ -20,7 +20,7 @@ gulp.task('less', function () {
     gulp.src('./css/style.less')
         .pipe(less())
         .pipe(autoprefixer({
-            browsers: ['last 2 versions', 'ie 8'],
+            browsers: ['last 2 versions', 'ie >= 8'],
             cascade: false,
         }))
         .pipe(csso())
