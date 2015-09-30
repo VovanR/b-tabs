@@ -2,12 +2,12 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>b-tabs</title>
+        <title>index-test</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" href="../vendor/mocha/mocha.css">
-        <link rel="stylesheet" href="../css/build/style.css">
+        <link rel="stylesheet" href="../node_modules/mocha/mocha.css">
+        <link rel="stylesheet" href="../css/build.css">
     </head>
     <body>
         <div id="mocha">
@@ -90,9 +90,9 @@
 
         </div>
 
-
-        <script src="../vendor/mocha/mocha.js"></script>
-        <script src="../vendor/requirejs/require.js"></script>
+        <script src="../node_modules/mocha/mocha.js"></script>
+        <script src="../node_modules/requirejs/require.js"></script>
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
         <script>
         requirejs.config.baseUrl = './';
         requirejs(['../common'], function (common) {

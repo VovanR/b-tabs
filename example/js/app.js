@@ -1,14 +1,16 @@
 /**
- * @author VovanR <mail@vovanr.com>
+ * @author Vladimir Rodkin <mail@vovanr.com>
  */
 
 define([
     'jquery',
-    '../../index',
+    'tabs',
 ], function (
     $,
     Tabs
 ) {
+
+    'use strict';
 
     var App;
 
@@ -25,12 +27,12 @@ define([
         _initialize: function () {
             console.info('App init');
 
-            var tabs = new Tabs({
+            this._tabs = new Tabs({
                 name: 'test',
             });
         },
     };
 
-    return App;
+    return new App();
 
 });

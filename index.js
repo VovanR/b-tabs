@@ -1,5 +1,8 @@
 /**
- * @author VovanR <mail@vovanr.com>
+ * Tabs for any content
+ *
+ * @module Tabs
+ * @author Vladimir Rodkin <mail@vovanr.com>
  */
 
 define([
@@ -14,19 +17,18 @@ define([
     var currentClass = '_state_current';
 
     /**
-     * Tabs module
-     *
      * @param {Object} o Options
      * @param {String} o.name
      * @constructor
+     * @alias module:Tabs
      */
     Tabs = function (o) {
         this._name = o.name;
 
-        this._bTabs = null;
-        this._bPanels = null;
+        this._$tabs = null;
+        this._$panels = null;
 
-        this._initialize();
+        this._init();
     };
 
     Tabs.prototype = {
@@ -35,12 +37,12 @@ define([
          *
          * @private
          */
-        _initialize: function () {
+        _init: function () {
             console.info('Tabs init');
 
             var bTabs = $('.b-tabs._name_' + this._name);
-            this._bTabs = bTabs.filter('.b-tabs__tabs');
-            this._bPanels = bTabs.filter('.b-tabs__panels');
+            this._$tabs = bTabs.filter('.b-tabs__tabs');
+            this._$panels = bTabs.filter('.b-tabs__panels');
 
             this._bindControls();
         },
@@ -63,7 +65,7 @@ define([
         _bindClickOnTab: function () {
             var _this = this; // Save context
 
-            this._bTabs.on('click', '.b-tabs__tab', function (e) {
+            this._$tabs.on('click', '.b-tabs__tab', function (e) {
                 var name = $(this).data('name');
 
                 _this._openTab(name);
@@ -79,7 +81,7 @@ define([
          * @private
          */
         _bindArrowKeys: function () {
-            this._bTabs.on('keyup', function (e) {
+            this._$tabs.on('keyup', function (e) {
                 if (e.keyCode === 39) {
                     this.openNext();
                 } else if (e.keyCode === 37) {
@@ -95,7 +97,7 @@ define([
          * @private
          */
         _openTab: function (name) {
-            this._bTabs.find('.b-tabs__tab')
+            this._$tabs.find('.b-tabs__tab')
                 .removeClass(currentClass)
                 .filter('._name_' + name)
                 .addClass(currentClass);
@@ -110,7 +112,7 @@ define([
          * @private
          */
         _openPanel: function (name) {
-            this._bPanels.find('.b-tabs__panel')
+            this._$panels.find('.b-tabs__panel')
                 .removeClass(currentClass)
                 .filter('._name_' + name)
                 .addClass(currentClass);
@@ -120,8 +122,8 @@ define([
          * Open next tab
          */
         openNext: function () {
-            var tabs = this._bTabs.find('.b-tabs__tab');
-            var currentTab = this._bTabs.find('.' + currentClass);
+            var tabs = this._$tabs.find('.b-tabs__tab');
+            var currentTab = this._$tabs.find('.' + currentClass);
             var current = currentTab.index();
             var length = tabs.length;
             var next = current + 1;
@@ -137,8 +139,8 @@ define([
          * Open previous tab
          */
         openPrev: function () {
-            var tabs = this._bTabs.find('.b-tabs__tab');
-            var currentTab = this._bTabs.find('.' + currentClass);
+            var tabs = this._$tabs.find('.b-tabs__tab');
+            var currentTab = this._$tabs.find('.' + currentClass);
             var current = currentTab.index();
             var length = tabs.length;
             var prev = current - 1;

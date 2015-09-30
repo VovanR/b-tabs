@@ -1,25 +1,44 @@
 {
   "name": "b-tabs",
-  "version": "0.0.0",
   "description": "Tabs for any content",
-  "homepage": "https://github.com/VovanR/b-tabs",
-  "license": "MIT",
-  "repository": "VovanR/b-tabs",
-  "author": {
-    "name": "VovanR",
-    "url": "http://vovanr.com/"
+  "version": "0.0.0",
+  "author": "Vladimir Rodkin <mail@vovanr.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.comVovanR/b-tabs"
+  },
+  "scripts": {
+    "prepush": "npm test; npm run lint",
+    "precommit": "npm test; npm run lint",
+    "test": "mocha-phantomjs -R spec ./test/index-test.html",
+    "lint": "npm run jslint; npm run jscs",
+    "jslint": "jshint --reporter ./node_modules/jshint-stylish ./index.js ./test/*.js",
+    "jscs": "jscs ./index.js ./test/*.js",
+    "build:css": "postcss --use postcss-import --use postcss-nested -o ./css/build.css ./css/style.css",
+    "postinstall": "npm run build:css"
   },
   "devDependencies": {
-    "bower": "",
-    "gulp": "",
-    "gulp-autoprefixer": "",
-    "gulp-csso": "",
-    "gulp-jscs": "",
-    "gulp-jshint": "",
-    "gulp-less": "",
-    "gulp-mocha-phantomjs": "",
-    "jscs": "",
-    "jscs-jsdoc": "",
-    "jshint-stylish": ""
-  }
+    "chai": "^3.3.0",
+    "husky": "^0.10.1",
+    "jquery": "^2.1.4",
+    "jscs": "^2.2.1",
+    "jscs-jsdoc": "^1.2.0",
+    "jshint": "^2.8.0",
+    "jshint-stylish": "^2.0.1",
+    "lodash": "^3.10.1",
+    "mocha": "^2.3.3",
+    "mocha-phantomjs": "^4.0.1",
+    "phantomjs": "^1.9.18",
+    "postcss": "^5.0.8",
+    "postcss-cli": "^2.1.0",
+    "postcss-import": "^7.0.0",
+    "postcss-nested": "^1.0.0",
+    "requirejs": "^2.1.20",
+    "sinon": "^1.17.1"
+  },
+  "bugs": {
+    "url": "https://github.com/VovanR/b-tabs/issues"
+  },
+  "homepage": "https://github.com/VovanR/b-tabs",
+  "license": "MIT"
 }
