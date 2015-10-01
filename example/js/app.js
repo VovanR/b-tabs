@@ -1,36 +1,37 @@
 /**
- * @author VovanR <mail@vovanr.com>
+ * @author Vladimir Rodkin <mail@vovanr.com>
  */
 
+/* global define */
 define([
-    'jquery',
-    '../../index',
+	'jquery',
+	'tabs'
 ], function (
-    $,
-    Tabs
+	$,
+	Tabs
 ) {
+	'use strict';
 
-    var App;
+	var App;
 
-    App = function () {
-        this._initialize();
-    };
+	App = function () {
+		this._initialize();
+	};
 
-    App.prototype = {
-        /**
-         * Initialize
-         *
-         * @private
-         */
-        _initialize: function () {
-            console.info('App init');
+	App.prototype = {
+		/**
+		 * Initialize
+		 *
+		 * @private
+		 */
+		_initialize: function () {
+			console.info('App init');
 
-            var tabs = new Tabs({
-                name: 'test',
-            });
-        },
-    };
+			this._tabs = new Tabs({
+				name: 'test'
+			});
+		}
+	};
 
-    return App;
-
+	return new App();
 });

@@ -10,8 +10,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="../css/build/style.css">
-        <script src="../vendor/modernizr/modernizr.js"></script>
+        <link rel="stylesheet" href="../css/build.css">
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -57,15 +56,17 @@
 </div>
 <!-- b-tabs__panels end -->
 
-
-        <script src="../vendor/requirejs/require.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.18/require.min.js"></script>
         <script>
-        requirejs.config.baseUrl = './';
-        requirejs(['../common'], function (common) {
-            requirejs(['./js/app'], function (App) {
-                var app = new App();
+            require.config({
+                paths: {
+                    jquery: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min',
+                    tabs: 'https://raw.githubusercontent.com/VovanR/b-tabs/master/index',
+                    app: './js/app',
+                },
             });
-        });
+
+            require(['app']);
         </script>
     </body>
 </html>
