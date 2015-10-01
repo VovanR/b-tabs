@@ -92,12 +92,18 @@
 
         <script src="../node_modules/mocha/mocha.js"></script>
         <script src="../node_modules/requirejs/require.js"></script>
-        <script src="../node_modules/jquery/dist/jquery.js"></script>
         <script>
-        requirejs.config.baseUrl = './';
-        requirejs(['../common'], function (common) {
-            requirejs(['./index-test']);
+        mocha.setup('bdd');
+        requirejs.config({
+            baseUrl: './',
+            paths: {
+                jquery: '../node_modules/jquery/dist/jquery',
+                chai: '../node_modules/chai/chai',
+                sinon: '../node_modules/sinon/pkg/sinon',
+                lodash: '../node_modules/lodash/index',
+            },
         });
+        requirejs(['./index-test']);
         </script>
     </body>
 </html>
