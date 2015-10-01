@@ -4,7 +4,7 @@
 [![Dependency Status][depstat-image]][depstat-url]
 [![DevDependency Status][depstat-dev-image]][depstat-dev-url]
 
-> Tabs for any content. RequireJS module ([Demo](https://jsfiddle.net/VovanR/novv7cy3/))
+> Tabs for any content. RequireJS module ([Demo](https://jsfiddle.net/VovanR/novv7cy3/4/))
 
 ![](preview/example.png)
 ![](preview/example2.png)
